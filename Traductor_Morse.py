@@ -1,11 +1,19 @@
+from colorama import Fore
+
 #Se define la función que traduce de texto a morse
 
 def texto_a_morse(msg):
-    caracteres_morse = [".- .-.-. ","-... .-.-. ","-.-. .-.-. ","-.. .-.-. ",". .-.-. ","..-. .-.-. ","--. .-.-. ",
-                        ".... .-.-. ",".. .-.-. ",".--- .-.-. ","-.- .-.-. ",".-.. .-.-. ","-- .-.-. ","-. .-.-. ",
-                        "--- .-.-. ",".--. .-.-. ","--.- .-.-. ",".-. .-.-. ","... .-.-. ","- .-.-. ","..- .-.-. ",
-                        "...- .-.-. ",".-- .-.-. ","-..- .-.-. ","-.-- .-.-. ","--.. .-.-. ","/ "]
-    letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," ","¿","?","¡","!"]
+    caracteres_morse = [".- ","-... ","-.-. ","-.. ",". ","..-. ","--. ",
+                        ".... ",".. ",".--- ","-.- ",".-.. ","-- ","-. ",
+                        "--- ",".--. ","--.- ",".-. ","... ","- ","..- ",
+                        "...- ",".-- ","-..- ","-.-- ","--.. ","/ ","..--.. ",  
+                        "--...- ","-.-.-- ","--..-- ",".-.-.- ","---... ","-.--. ",
+                        "-.--.- ","----- ",".---- ","..--- ","...-- ","....- ","..... ",
+                        "-.... ","--... ","---.. ","----. "]
+    
+    letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R",
+              "S","T","U","V","W","X","Y","Z"," ","?","¡","!",",",".",":","(",")","0",
+              "1","2","3","4","5","6","7","8","9"]
     traduccion = ""
     for i in range(len(msg)):
         if(msg[i].upper() in letras):
@@ -22,11 +30,17 @@ def texto_a_morse(msg):
 #Se define la función que traduce de morse a texto
 
 def morse_a_texto(msg):
-    caracteres_morse = [".- .-.-. ","-... .-.-. ","-.-. .-.-. ","-.. .-.-. ",". .-.-. ","..-. .-.-. ","--. .-.-. ",
-                        ".... .-.-. ",".. .-.-. ",".--- .-.-. ","-.- .-.-. ",".-.. .-.-. ","-- .-.-. ","-. .-.-. ",
-                        "--- .-.-. ",".--. .-.-. ","--.- .-.-. ",".-. .-.-. ","... .-.-. ","- .-.-. ","..- .-.-. ",
-                        "...- .-.-. ",".-- .-.-. ","-..- .-.-. ","-.-- .-.-. ","--.. .-.-. ","/ "]
-    letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"," "]
+    caracteres_morse = [".- ","-... ","-.-. ","-.. ",". ","..-. ","--. ",
+                        ".... ",".. ",".--- ","-.- ",".-.. ","-- ","-. ",
+                        "--- ",".--. ","--.- ",".-. ","... ","- ","..- ",
+                        "...- ",".-- ","-..- ","-.-- ","--.. ","/ ","..--.. ",
+                        "--...- ","-.-.-- ","--..-- ",".-.-.- ","---... ","-.--. ",
+                        "-.--.- ","----- ",".---- ","..--- ","...-- ","....- ","..... ",
+                        "-.... ","--... ","---.. ","----. "]
+    
+    letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R",
+              "S","T","U","V","W","X","Y","Z"," ","?","¡","!",",",".",":","(",")","0",
+              "1","2","3","4","5","6","7","8","9"]
     traduccion = ""
     morse = []
     temp = ""
@@ -48,14 +62,14 @@ def morse_a_texto(msg):
 
 repetir = "SI"
 while(repetir == "SI"):
-    pregunta = input("Seleccione:\nPara traducir de texto a morse, ingrese 1\nPara traducir de morse a texto, ingrese 2\n")
+    pregunta = input(Fore.GREEN + "Seleccione:\nPara traducir de texto a morse, ingrese 1\nPara traducir de morse a texto, ingrese 2\n")
     if(pregunta == "1"):
-        texto = input("Ingrese el texto que desea traducir a código morse:\n")
+        texto = input(Fore.CYAN + "Ingrese el texto que desea traducir a código morse:\n")
         print(texto_a_morse(texto))
     elif(pregunta == "2"):
-        texto = input("Ingrese el código morse que desea traducir a texto:\n")
+        texto = input(Fore.CYAN + "Ingrese el código morse que desea traducir a texto:\n")
         print(morse_a_texto(texto))
-    repetir = input("¿Desea volver a traducir? (Responda con si o no)\n").upper()
+    repetir = input(Fore.LIGHTYELLOW_EX + "¿Desea volver a traducir? (Responda con si o no)\n").upper()
     if(repetir == "NO"):
-        print("¡Vueva pronto! :)")
+        print(Fore.WHITE + "¡Vueva pronto! :)")
         break
